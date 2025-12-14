@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// API-only application - return 404 for all web routes
+Route::fallback(function () {
+    abort(404);
 });

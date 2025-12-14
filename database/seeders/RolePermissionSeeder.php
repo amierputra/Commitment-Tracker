@@ -39,7 +39,7 @@ class RolePermissionSeeder extends Seeder
         }
 
         // In non-production environments, remove permissions not in the defined list
-        if (!app()->isProduction()) {
+        if (! app()->isProduction()) {
             Permission::where('guard_name', 'api')
                 ->whereNotIn('name', $definedPermissions)
                 ->delete();
@@ -51,7 +51,7 @@ class RolePermissionSeeder extends Seeder
         $user = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'api']);
 
         // In non-production environments, remove roles not in the defined list
-        if (!app()->isProduction()) {
+        if (! app()->isProduction()) {
             Role::where('guard_name', 'api')
                 ->whereNotIn('name', $definedRoles)
                 ->delete();
